@@ -26,6 +26,12 @@ app.get("/news/:id", (req, res) => {
     res.send(selectedNews);
 });
 
+app.get("/categories/:id", (req, res) => {
+    const id = req.params.id;
+    const categoryNews = news.filter(n => n.category_id === id);
+    res.send(categoryNews);
+});
+
 app.listen(port, () => {
     console.log(`Dragon API is running on port: ${port}`);
 });
